@@ -1,0 +1,27 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.DS_Store
+
+# model weights and large binaries - never commit
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.npz
+*.npy
+
+# archives and raw pipeline output
+*.tgz
+*.tar.gz
+*.zip
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/shared_1785_design_pool.csv
+
+# cluster noise
+*.out
+*.err
+slurm-*
+logs/

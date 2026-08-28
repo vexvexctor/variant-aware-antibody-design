@@ -1,0 +1,16 @@
+designs: 1,140
+POOLED r(WT ddG, held-out escape worst-case) = +0.720   r^2=0.518  -> WT binding explains 51.8% of escape-robustness variance
+WITHIN-TARGET n=190: mean r=+0.527 median r=+0.659
+  targets with r>0.7 (escape ~redundant with WT): 86/190
+
+least-coupled targets (best candidates for a decoupled eval panel):
+  7AMS_HLB  r=-0.819
+  5CZX_HLA  r=-0.635
+  3QUM_HLP  r=-0.612
+  2W9E_HLA  r=-0.518
+  6HHC_HLA  r=-0.503
+  3VI3_HLD  r=-0.478
+  5GGT_HLA  r=-0.462
+  1KB5_HLB  r=-0.359
+  6J11_HLA  r=-0.335
+  3UAJ_HLA  r=-0.264

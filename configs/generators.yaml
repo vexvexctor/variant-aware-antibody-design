@@ -1,0 +1,43 @@
+# Frozen generators. Checkpoints are NOT redistributed here -- see scripts/00_download_dependencies.sh.
+# Design space is CDR-H3 only; the rest of the Fv and the antigen are held fixed.
+common:
+  design_space: CDR-H3
+  backbone: fixed (native complex)     # except the de-novo generators below
+  candidates_per_run: 6
+
+generators:
+  antifold:
+    wrapper: src/generators/antifold.py
+    upstream: https://github.com/oxpig/AntiFold
+    interface: frozen per-position logit table (.npz), see antifold_logits_export.py
+    temperature_baseline: 0.2
+    temperature_steered: 1.0
+  abmpnn:
+    wrapper: src/steering/variant_aware.py (LIVE_MPNN_BASES entry 'abmpnn_live')
+    checkpoint: "${VAAD_TOOLS}/abmpnn/abmpnn.pt"
+    note: "no standalone wrapper file; runs through the live-MPNN path"
+    temperature_baseline: 0.2
+    temperature_steered: 1.0
+  proteinmpnn:
+    wrapper: src/generators/proteinmpnn.py
+    upstream: https://github.com/dauparas/ProteinMPNN
+    weights: vanilla_model_weights/v_48_002.pt
+    temperature_baseline: 0.2
+    temperature_steered: 1.0
+  esm_if1:
+    wrapper: src/generators/esm_if1.py
+    upstream: fair-esm (esm.inverse_folding)
+    interface: frozen logit table via esm_if1_logits_export.py
+  masked_diffusion:
+    wrapper: src/steering/decoding.py (base 'diffusion')
+    checkpoint: "${VAAD_ROOT}/results/finetune/nos_4layer/finetune_best.pt"
+    note: "in-house; trained on a variant-level split, so all 200 targets appear in training"
+  rfantibody:
+    wrapper: src/generators/rfantibody_prep.py + rfantibody_collect.py
+    upstream: https://github.com/RosettaCommons/RFantibody
+    backbone: GENERATED (de-novo) and the Fv is re-docked
+    evaluation: own designed structure, not the native complex -- reported separately
+  diffab:
+    wrapper: src/generators/diffab.py
+    backbone: GENERATED (co-designed)
+    evaluation: own designed structure

@@ -1,0 +1,18 @@
+=== PYTHIA (OUT-OF-FAMILY) beat-native, held-out escape split ===
+
+arm                         beat-native     n  mean margin
+base_abmpnn_ar                    68.4%    57       -1.674
+ours_abmpnn_live                  81.0%    58       -2.248
+base_antifold                     48.3%    58       -0.250
+ours_antifold                     65.5%    58       -1.332
+base_proteinmpnn_ar               56.9%    58       -0.879
+ours_proteinmpnn_live             69.0%    58       -2.158
+rand_base_abmpnn_ar               62.1%    58        0.084
+rand_ours_abmpnn_live             48.2%    56        0.550
+base_rfantibody                   20.0%    50        7.564
+
+=== PAIRED: generator alone vs + our objective (Pythia) ===
+
+AbMPNN         base  68.4%  ours  80.7%  delta  +12.3 ** [+2, +23]  n=57
+AntiFold       base  48.3%  ours  65.5%  delta  +17.2 ** [+3, +31]  n=58
+ProteinMPNN    base  56.9%  ours  69.0%  delta  +12.1 [+0, +24]  n=58

@@ -1,0 +1,28 @@
+# Variant-aware inference-time steering. AS-RUN values for the headline arm.
+# NOTE: several CLI defaults in src/steering/variant_aware.py differ from the values
+# actually used; the run scripts pass these explicitly. Recorded here to avoid the
+# symbol collision documented in results/headline/HEADLINE_HONEST.md.
+arm: svdd_af_baddg
+
+objective:
+  aggregation: cvar                    # CLI default is 'mean'
+  cvar_alpha: 0.2
+  reward: "R(x) = -CVaR_0.2(margins) ; margins are design-minus-native, lower is better"
+  oracle: baddg_ddg                    # steering objective; NEVER used to grade
+
+decoding:
+  mechanism: svdd
+  svdd_k: 6                            # candidate width per step (CLI default is 12)
+  svdd_temp: 1.0
+  n_designs: 6                         # pool size (CLI default is 32)
+  max_cluster: 6                       # design-panel size M (CLI default is 24)
+  eval_cluster: 24
+  prior_weight: 0.0
+  guide_last_frac: 1.0
+  generator_parameters_updated: false  # training-free: the generator is frozen
+  derivative_free: true
+
+sampling:
+  seeded: false
+  replicates: 3
+  run_to_run_sd_h3_units: "0.5-0.7"    # single-run cells cannot resolve most effects

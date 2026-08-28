@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software or the RobustBench benchmark, please cite the paper."
+title: "Variant-aware CDR-H3 design improves predicted binding across antigen variation"
+abstract: >-
+  Antibody sequence generators normally condition on a single fixed antigen structure.
+  This work steers a frozen generator at inference time with a CVaR-aggregated
+  binding objective evaluated across multiple plausible antigen variants, and evaluates
+  the resulting CDR-H3 designs on held-out antigen variants never seen during design.
+  Includes RobustBench, a 200-complex antibody escape-robustness benchmark.
+authors:
+  - family-names: "<FILL IN>"
+    given-names: "<FILL IN>"
+version: "1.0.0"
+license: MIT
+repository-code: "<FILL IN ON RELEASE>"
+keywords:
+  - antibody design
+  - CDR-H3
+  - inference-time steering
+  - CVaR
+  - benchmark

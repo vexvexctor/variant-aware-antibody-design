@@ -1,0 +1,21 @@
+# Versions recorded from the environment the published runs used.
+# Analysis + figures (the --from-precomputed path) need only the first block.
+numpy==1.26.4
+pandas==2.3.3
+scipy==1.15.3
+matplotlib==3.10.8
+PyYAML==6.0.3
+
+# Design, steering and the learned evaluators (GPU)
+torch==2.10.0            # +cu129 build used here
+biopython==1.84
+fair-esm==2.0.0          # ESM-1v filtering and ESM-IF1
+
+# MM-GBSA evaluator only (see configs/evaluators.yaml for the OPENMM_PLUGIN_DIR trap)
+openmm==8.5.2
+pdbfixer
+
+# Not pip-installable -- see scripts/00_download_dependencies.sh:
+#   mmseqs2   (benchmark clustering; commit cb12a2d75a9808ee61721029d064a7bd80af6fec)
+#   FoldX 5   (proprietary; obtain your own licence)
+#   ProteinMPNN / AntiFold / AbMPNN / Pythia-PPI / RFantibody checkpoints

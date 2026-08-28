@@ -1,0 +1,11 @@
+target,complex_id,antigen,ag_pct_identity_vs_train,native_cdrh3,ours_cdrh3,ours_nmut,antifold_cdrh3,antifold_nmut,n_escape_steer,n_escape_eval,ours_h3_margin,ours_h3_beats,antifold_h3_margin,antifold_h3_beats,ours_foldx_margin,ours_foldx_beats,antifold_foldx_margin,antifold_foldx_beats
+9BQW,9BQW_HLA,Decorin-binding protein A (B. burgdorferi),0.0,ARDRRIVVVSAPGY,ARDFQRYTVSSPGD,7,ARDLGRYVVTSPGY,6,6,11,0.0618,False,0.5316,False,-0.0754,True,-0.6615,True
+9MA7,9MA7_HLA,Envelope glycoprotein GP35 (human gammaherpesvirus),0.0,ARDSIMIGYRGLDY,ARDQTRRGVNGIDI,8,ARDPIRRGTYGMDY,6,6,12,-0.147,True,0.3492,False,-0.0532,True,-0.1168,True
+9JT1,9JT1_HLA,Large envelope protein (HBV genotype D3),2.6,TRDGWLWGWDVRSNYYYNALDV,TRDGYLFGESNKGNYYYYAMDV,9,ARDGYLYGEPDEGNYYYYAMDV,10,6,11,0.2743,False,0.5547,False,-0.3779,True,0.9783,False
+9OG2,9OG2_HLA,A28L (Monkeypox virus),6.4,ARPFSYGAGYYFDS,ARPHYSGTGYHFDY,6,AKPRTRGTGYYFDS,5,6,12,-0.7044,True,-1.6739,True,-3.0268,True,-1.6594,True
+9YIO,9YIO_HLA,PvRipr EGF7-8 (P. vivax),15.1,ARSYYYGSSDAMDN,ARSLYYGSSYGMDY,4,ATSFYYGSSYGMDY,5,6,8,-0.4233,True,-0.2446,True,-3.0788,True,-3.0864,True
+9LY5,9LY5_HLA,CD276 antigen (H. sapiens),16.3,TRRTPPWHFAV,ARMEYPANMDH,9,ARLRYPYLFDY,8,6,8,-0.8232,True,0.2218,False,-4.7267,True,-3.213,True
+8RWB,8RWB_HLA,UL16-binding protein 6 (H. sapiens),17.4,ARQGYGFDN,VRERNGFDY,5,ARLGWGFDY,3,6,14,-0.3504,True,-1.0328,True,-3.214,True,-2.6742,True
+9KKJ,9KKJ_HLA,Nectin-4 (H. sapiens),29.8,AKQGGLLFYAMDY,ARTGDLFRLSMDY,7,ARHGGLLSGYLDY,6,6,14,-0.2598,True,1.8434,False,-3.1103,True,-0.3312,True
+9VL2,9VL2_HLA,Myeloid cell surface antigen (H. sapiens),40.0,SRFIGSYSHMDY,AKFYPWSCPFDV,10,ARDIPATYPFDY,8,6,11,0.1045,False,0.3889,False,-3.5884,True,-0.5354,True
+9PI9,9PI9_HLA,Tumor-assoc. calcium signal transducer (H. sapiens),48.6,ARGGFGSSYWYFDV,ARGGYGASYEYFDV,3,ARGGYGSSYYYFDV,2,6,8,-0.4154,True,-0.1221,True,-0.5499,True,-0.8993,True

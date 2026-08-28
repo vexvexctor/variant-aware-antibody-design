@@ -1,0 +1,42 @@
+# Evaluators. Agreement measured on a shared 1,785-design pool:
+# results/evaluator_agreement/{spearman,cohen_kappa,base_rates}.csv
+rules:
+  - "Never grade with the evaluator used as the optimization objective."
+  - "Steer BA-DDG -> grade H3-DDG (or the reverse)."
+  - "H3-DDG imports ProteinMPNN: it is IN-FAMILY for ProteinMPNN/AbMPNN arms.
+     Report within-generator paired deltas, not cross-generator absolute rates.
+     Call it a HELD-OUT evaluator, not an independent one."
+  - "Do not lead with FoldX: weakest vs experiment (+0.208 Spearman) and random CDR-H3
+     edits score 76.5% under it. Any FoldX table needs the edit-matched null column."
+  - "Pythia absolute rates are inflated (random null 50-68%); use paired deltas only."
+  - "MM-GBSA calls beat-native on 1.3% of the shared pool and has kappa ~0 against every
+     other evaluator: failure to replicate under MM-GBSA is weak evidence, not strong
+     independent evidence against an effect."
+
+evaluators:
+  ba_ddg:
+    module: src/evaluators/ba_ddg.py
+    role: steering objective (in-loop)
+    lineage: ProteinMPNN
+    beat_native_rate_shared_pool: 33.4
+  h3_ddg:
+    module: src/evaluators/h3_ddg.py
+    role: primary held-out evaluator
+    lineage: ProteinMPNN (imports it directly)
+    beat_native_rate_shared_pool: 39.7
+  pythia_ppi:
+    module: src/evaluators/pythia_ppi.py
+    role: out-of-family check, post-selection only
+    lineage: none (self-supervised stability model)
+    beat_native_rate_shared_pool: 37.0
+  foldx:
+    module: src/evaluators/foldx.py
+    role: auxiliary physics check
+    licence: proprietary -- user must obtain the binary; not redistributed
+    beat_native_rate_shared_pool: 16.5
+  mmgbsa:
+    module: src/evaluators/mmgbsa.py
+    role: auxiliary physics check
+    note: "set OPENMM_PLUGIN_DIR to the env lib/plugins and request a GPU, or OpenMM
+           silently runs ~20x slower on CPU"
+    beat_native_rate_shared_pool: 1.3

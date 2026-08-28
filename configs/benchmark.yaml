@@ -1,0 +1,47 @@
+# RobustBench construction. Values are AS RUN for the published benchmark.
+source:
+  dataset: AACDB
+  structures_glob: "${VAAD_ROOT}/datasets/AACDB/complex_structure/*.pdb"
+  pdb_files_in_snapshot: 7695
+  antigen_sequences_extracted: 7491   # 204 dropped: antigen < 30 residues
+
+antigen_extraction:
+  # see src/benchmark/extract_antigens.py; validated byte-identical (1126/1126)
+  # against the original feature-derived sequences
+  antibody_chains_rule: "id suffix 'XLY' -> [X, L]; otherwise [X]"
+  antigen_chains: "remaining characters of the id suffix"
+  gap_placeholders_kept: true          # stripping 'X' breaks the match (568/1126)
+  truncate_residues: 1200
+  min_antigen_length: 30
+  fasta_header: "complex id, e.g. 1IC7_HLY"
+
+clustering:
+  tool: mmseqs2
+  command: easy-cluster
+  min_seq_id: 0.70
+  coverage: 0.80
+  cov_mode: 0                          # coverage required on BOTH query and target
+  cluster_mode: 0                      # greedy set-cover
+  full_aacdb_clusters: 1484
+  benchmark_represented_full_clusters: 171
+  benchmark_cluster_labels: 172
+  # 171 != 172 and neither is a typo. See data/README.md: 171 counts clusters after
+  # clustering the FULL AACDB sequence set; 172 is the fixed benchmark labelling obtained
+  # within the 1,126 structurally eligible candidates. Statistics use the 172 labels.
+
+variant_generation:
+  epitope_cutoff_angstrom: 4.5         # src/lyra_mutants interface.py direct_cutoff
+  shell_cutoff_angstrom: 8.0           # interface.py shell_cutoff
+  proposal_model: ProteinMPNN
+  beam_search_depth: 3
+  plausibility_filter: ESM-1v
+  accepted_variants_total: 3040707
+
+panels:
+  targets: 200
+  design_variants_per_target: 6        # top-6 by omega (WT-proximal)
+  heldout_variants_per_target: 24      # bottom-24 by omega (most divergent)
+  wt_state_per_target: 1
+  holdout_by: omega
+  holdout_seed: 0
+  disjointness: "guaranteed while n_variants >= 24 + M; panel minimum is 41"

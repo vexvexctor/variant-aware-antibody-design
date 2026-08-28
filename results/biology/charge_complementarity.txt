@@ -1,0 +1,10 @@
+designs with an epitope-charge estimate: 74,658
+epitope net charge ranges -8 .. 5
+
+Correlation of DESIGN charge vs escape margin, split by EPITOPE charge
+(negative r = more positive CDR charge is MORE robust)
+
+    epitope charge  n designs   r(design charge, margin)
+    acidic (<= -3)      14934                     -0.024
+  neutral (-2..+2)      51810                      0.062
+     basic (>= +3)       7914                      0.187
