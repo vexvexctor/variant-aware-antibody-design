@@ -7,9 +7,6 @@ procedure has asked whether the designed antibody still binds. This work asks wh
 antibodies whose predicted binding persists across antigen variation, without retraining the
 generator or touching its weights.
 
-> **Method figure.** The manuscript's Figure 1 is not in this archive (the paper source was
-> never on the machine this repository was assembled from). See `paper/README.md` and the
-> pseudocode below. Figures that *are* regenerated from released results are in `figures/`.
 
 ## Method in brief
 
